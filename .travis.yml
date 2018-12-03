@@ -1,17 +1,19 @@
 dist: xenial
 
+sudo: required
+
 language: c
 
 addons:
         apt:
                 packages:
                         - make
-                        - gcc-aarch64-linux-gnu
+                        - binutils-arm-linux-gnueabi
+                        - gcc-arm-linux-gnueabi
                         - binutils-aarch64-linux-gnu
+                        - gcc-aarch64-linux-gnu
                         - qemu-user-static
                         - libc6-dev-i386
-                        - linux-libc-dev
-                        - libx32gcc-5-dev
 
 script:
         - make && make image
