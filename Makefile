@@ -73,7 +73,8 @@ IMAGE_DIR_NAME := image
 IMAGE_DIR := ${BUILD_DIR}/${IMAGE_DIR_NAME}
 
 image:
-	$(TOP_DIR)/scripts/gen_image.sh $(TOP_DIR) $(DL_DIR) $(BUILD_DIR) $(OUTPUT_DIR) $(IMAGE_DIR)
+	$(TOP_DIR)/scripts/gen_image.sh $(TOP_DIR) $(DL_DIR) $(BUILD_DIR) \
+		$(OUTPUT_DIR) $(IMAGE_DIR)
 
 clean:
 	-rm -rf $(CLEAN_TARGETS)
