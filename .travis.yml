@@ -1,0 +1,13 @@
+dist: xenial
+
+addons:
+        apt:
+                packages:
+                        - make
+                        - gcc-aarch64-linux-gnu
+                        - binutils-aarch64-linux-gnu
+                        - qemu-user-static
+
+script:
+        - make && make image
+
