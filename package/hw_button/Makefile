@@ -8,21 +8,8 @@
 #
 # @brief This Makefile is for reset program
 
-
-# Use for cross compile
-CC := $(CROSS_COMPILE)gcc
-
-# No cross compiler specified, use arm64 by default
-ifeq ($(CC), gcc)
-	CC := aarch64-linux-gnu-gcc
-endif
-
-obj=hw_button
+all: hw_button
 
 hw_button: main.c -lpthread
-	-mkdir -p $(OUTPUT_DIR)/usr/local/bin
-	$(CC) -o $(OUTPUT_DIR)/usr/local/bin/$(obj) main.c -lpthread
+	gcc -o /usr/local/bin/hw_button main.c -lpthread
 
-.PHONY: clean
-clean:
-	-rm -f $(obj)

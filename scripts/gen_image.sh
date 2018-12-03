@@ -9,6 +9,7 @@
 # @date 28th Nov, 2018
 #
 # @brief This shell script will download the Ubuntu image to dl dir
+# and unpack it, modify it, then repack as a sigle tarball
 
 DOWNLOAD_URL=http://cdimage.ubuntu.com/releases
 RELEASE_VERSION=18.04
@@ -17,8 +18,7 @@ ISO_NAME=ubuntu-18.04.1-server-arm64.iso
 TOP_DIR=${1}
 DL_DIR=${2}
 BUILD_DIR=${3}
-OUTPUT_DIR=${4}
-IMAGE_DIR=${5}
+IMAGE_DIR=${4}
 
 ISO_URL=${DOWNLOAD_URL}/${RELEASE_VERSION}/release/${ISO_NAME}
 
@@ -63,9 +63,6 @@ build_alter() {
 }
 
 build_append() {
-	# Append all useful file generated using "make" into rootfs
-	# cp -R ${OUTPUT_DIR}/* ${BUILD_DIR}/rootfs
-
 	# Append etc files
 	cp -R ${TOP_DIR}/etc/* ${BUILD_DIR}/rootfs/etc
 }
@@ -79,6 +76,9 @@ build_adjust() {
 	# Move the script that running in the new rootfs
 	cp ${TOP_DIR}/scripts/do_adjust.sh ${BUILD_DIR}/rootfs/do_adjust.sh
 
+	# Move package
+	cp -R ${TOP_DIR}/package ${BUILD_DIR}/rootfs/root
+
 	# Change to new rootfs and run the script
 	chroot ${BUILD_DIR}/rootfs /do_adjust.sh
 
@@ -87,6 +87,9 @@ build_adjust() {
 		echo "Some thing go wrong in chroot!"
 		exit 1
 	fi
+
+	# Remove all package files
+	rm -rf ${BUILD_DIR}/rootfs/root/*
 
 	# When the script is return, now it is in host env, remove the script
 	rm ${BUILD_DIR}/rootfs/do_adjust.sh

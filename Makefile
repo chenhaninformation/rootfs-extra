@@ -22,7 +22,6 @@
 # Define sub directory name of build and download
 BUILD_DIR_NAME := build
 DL_DIR_NAME := dl
-OUTPUT_DIR_NAME := output
 
 # Top directory, build directory and download directory
 export TOP_DIR := $(shell pwd)
@@ -35,9 +34,6 @@ export DL_DIR := $(shell mkdir -p $(TOP_DIR)/$(DL_DIR_NAME) && \
 			 cd $(TOP_DIR)/$(DL_DIR_NAME) && \
 			 pwd)
 
-export OUTPUT_DIR := $(shell mkdir -p $(BUILD_DIR)/$(OUTPUT_DIR_NAME) && \
-			     cd $(BUILD_DIR)/$(OUTPUT_DIR_NAME) && \
-			     pwd)
 # Clean targets
 export CLEAN_TARGETS := $(BUILD_DIR)
 
@@ -74,7 +70,7 @@ IMAGE_DIR := ${BUILD_DIR}/${IMAGE_DIR_NAME}
 
 image:
 	$(TOP_DIR)/scripts/gen_image.sh $(TOP_DIR) $(DL_DIR) $(BUILD_DIR) \
-		$(OUTPUT_DIR) $(IMAGE_DIR)
+		$(IMAGE_DIR)
 
 clean:
 	-rm -rf $(CLEAN_TARGETS)
