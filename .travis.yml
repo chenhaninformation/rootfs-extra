@@ -10,6 +10,7 @@ addons:
                         - make
                         - binutils-aarch64-linux-gnu
                         - gcc-aarch64-linux-gnu
+                        - gcc-multilib
                         - qemu-user-static
                         - libc6-dev-i386
 
