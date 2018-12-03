@@ -11,12 +11,7 @@ addons:
                         - binutils-aarch64-linux-gnu
                         - gcc-aarch64-linux-gnu
                         - qemu-user-static
-                        - libc6-dev-i386
-                        - linux-libc-dev-arm64-cross
-
-before_install:
-        - sudo ln -s /usr/include/asm-generic /usr/include/asm
 
 script:
-        - make && sudo make image
+        - sudo make image
 
