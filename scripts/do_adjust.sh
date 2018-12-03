@@ -14,8 +14,14 @@ password="chinfo"
 # Update
 apt update
 
+if [ $? -ne 0 ]
+then
+	echo "'apt update' exit none zero!"
+	exit 1
+fi
+
 # Install OpenSSH
-(echo y) | apt install openssh-server
+apt install -y openssh-server
 
 # Allow password login
 sed 's/#PasswordAuthentication yes/PasswordAuthentication yes/'	\

@@ -82,6 +82,12 @@ build_adjust() {
 	# Change to new rootfs and run the script
 	chroot ${BUILD_DIR}/rootfs /do_adjust.sh
 
+	if [ $? -ne 0 ]
+	then
+		echo "Some thing go wrong in chroot!"
+		exit 1
+	fi
+
 	# When the script is return, now it is in host env, remove the script
 	rm ${BUILD_DIR}/rootfs/do_adjust.sh
 
