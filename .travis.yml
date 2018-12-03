@@ -8,8 +8,6 @@ addons:
         apt:
                 packages:
                         - make
-                        - binutils-aarch64-linux-gnu
-                        - gcc-aarch64-linux-gnu
                         - qemu-user-static
 
 script:
