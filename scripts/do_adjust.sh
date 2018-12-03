@@ -20,7 +20,7 @@ then
 fi
 
 # Upgrade
-apt upgrade
+echo y | apt upgrade
 if [ $? -ne 0 ]
 then
 	echo "'apt upgrade' exit none zero!"
