@@ -6,6 +6,7 @@ addons:
                         - make
                         - gcc-aarch64-linux-gnu
                         - binutils-aarch64-linux-gnu
+                        - libc6-arm64-cross
                         - qemu-user-static
 
 script:
