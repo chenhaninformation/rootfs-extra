@@ -9,6 +9,7 @@ addons:
                         - qemu-user-static
                         - libc6
                         - libc6-dev
+                        - libc6-dev-i386
 
 script:
         - make && make image
