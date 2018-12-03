@@ -8,12 +8,13 @@ addons:
         apt:
                 packages:
                         - make
-                        - binutils-arm-linux-gnueabi
-                        - gcc-arm-linux-gnueabi
                         - binutils-aarch64-linux-gnu
                         - gcc-aarch64-linux-gnu
                         - qemu-user-static
                         - libc6-dev-i386
+
+before_install:
+        - ln -s /usr/include/asm-generic /usr/include/asm
 
 script:
         - make && make image
