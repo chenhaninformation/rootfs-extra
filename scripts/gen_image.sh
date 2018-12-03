@@ -98,7 +98,12 @@ build_pack() {
 
 	mkdir -p ${IMAGE_DIR}
 
-	tar -cjvf ${IMAGE_DIR}/rootfs.tar.bz2 -C ${BUILD_DIR}/rootfs .
+	echo "Start to packaging the final rootfs into tarball..."
+	echo "This may take a while, please wait......"
+	echo "(You will see 'Packaging compleate!' when its done.)"
+	tar -cjvf ${IMAGE_DIR}/rootfs.tar.bz2 -C ${BUILD_DIR}/rootfs .	\
+		> /dev/null
+	echo "Packaging compleate!"
 }
 
 build_download
