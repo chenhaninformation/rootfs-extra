@@ -1,5 +1,7 @@
 dist: xenial
 
+language: c
+
 addons:
         apt:
                 packages:
@@ -7,9 +9,8 @@ addons:
                         - gcc-aarch64-linux-gnu
                         - binutils-aarch64-linux-gnu
                         - qemu-user-static
-                        - libc6
-                        - libc6-dev
                         - libc6-dev-i386
+                        - linux-libc-dev
 
 script:
         - make && make image
