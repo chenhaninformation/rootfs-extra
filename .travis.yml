@@ -10,12 +10,12 @@ addons:
                         - make
                         - binutils-aarch64-linux-gnu
                         - gcc-aarch64-linux-gnu
-                        - gcc-multilib
                         - qemu-user-static
                         - libc6-dev-i386
 
 before_install:
         - sudo ln -s /usr/include/asm-generic /usr/include/asm
+        - sudo ln -s /usr/lib/x86_64-linux-gnu /usr/lib64
 
 script:
         - make && sudo make image
