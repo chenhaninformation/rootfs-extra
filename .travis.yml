@@ -6,8 +6,9 @@ addons:
                         - make
                         - gcc-aarch64-linux-gnu
                         - binutils-aarch64-linux-gnu
-                        - libc6-arm64-cross
                         - qemu-user-static
+                        - libc6
+                        - libc6-dev
 
 script:
         - make && make image
