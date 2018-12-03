@@ -19,14 +19,6 @@ then
 	exit 1
 fi
 
-# Upgrade
-echo y | apt upgrade
-if [ $? -ne 0 ]
-then
-	echo "'apt upgrade' exit none zero!"
-	exit 1
-fi
-
 
 # Install OpenSSH
 apt install -y openssh-server
