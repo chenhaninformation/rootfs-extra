@@ -14,8 +14,8 @@ addons:
                         - libc6-dev-i386
 
 before_install:
-        - ln -s /usr/include/asm-generic /usr/include/asm
+        - sudo ln -s /usr/include/asm-generic /usr/include/asm
 
 script:
-        - make && make image
+        - make && sudo make image
 
