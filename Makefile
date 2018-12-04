@@ -22,6 +22,7 @@
 # Define sub directory name of build and download
 BUILD_DIR_NAME := build
 DL_DIR_NAME := dl
+OUTPUT_DIR_NAME := output
 
 # Top directory, build directory and download directory
 export TOP_DIR := $(shell pwd)
@@ -33,6 +34,10 @@ export BUILD_DIR := $(shell mkdir -p $(TOP_DIR)/$(BUILD_DIR_NAME) && \
 export DL_DIR := $(shell mkdir -p $(TOP_DIR)/$(DL_DIR_NAME) && \
 			 cd $(TOP_DIR)/$(DL_DIR_NAME) && \
 			 pwd)
+
+export OUTPUT_DIR := $(shell mkdir -p $(BUILD_DIR)/$(OUTPUT_DIR_NAME) && \
+			     cd $(BUILD_DIR)/$(OUTPUT_DIR_NAME) && \
+			     pwd)
 
 # Clean targets
 export CLEAN_TARGETS := $(BUILD_DIR)
@@ -46,10 +51,7 @@ export DISTCLEAN_TARGETS := $(DOWNLOAD_DIR)
 ##############################################################################
 
 
-all: button
-
-button:
-	@$(MAKE) -C package/hw_button
+all: image
 
 .PHONY: help install image clean distclean
 
@@ -62,15 +64,15 @@ help:
 	@echo "    clean        - Clean build file, but leave download files"
 	@echo "    distclean    - Clean all build process generated files"
 
-install:
-	echo
-
 IMAGE_DIR_NAME := image
 IMAGE_DIR := ${BUILD_DIR}/${IMAGE_DIR_NAME}
 
-image:
+image: ubootenv
 	$(TOP_DIR)/scripts/gen_image.sh $(TOP_DIR) $(DL_DIR) $(BUILD_DIR) \
-		$(IMAGE_DIR)
+		$(OUTPUT_DIR) $(IMAGE_DIR)
+
+ubootenv:
+	$(MAKE) -C lib/ubootenv
 
 clean:
 	-rm -rf $(CLEAN_TARGETS)

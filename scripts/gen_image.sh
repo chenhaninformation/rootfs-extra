@@ -18,7 +18,8 @@ ISO_NAME=ubuntu-18.04.1-server-arm64.iso
 TOP_DIR=${1}
 DL_DIR=${2}
 BUILD_DIR=${3}
-IMAGE_DIR=${4}
+OUTPUT_DIR=${4}
+IMAGE_DIR=${5}
 
 ISO_URL=${DOWNLOAD_URL}/${RELEASE_VERSION}/release/${ISO_NAME}
 
@@ -63,6 +64,9 @@ build_alter() {
 }
 
 build_append() {
+	# Append output/* files
+	cp -R ${OUTPUT_DIR}/* ${BUILD_DIR}/rootfs
+
 	# Append etc files
 	cp -R ${TOP_DIR}/etc/* ${BUILD_DIR}/rootfs/etc
 }

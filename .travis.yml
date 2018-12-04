@@ -6,10 +6,13 @@ language: c
 
 addons:
         apt:
+                sources:
+                        - sourceline: 'ppa:team-gcc-arm-embedded/ppa'
                 packages:
                         - make
+                        - gcc-arm-embedded
                         - qemu-user-static
 
 script:
-        - sudo make image
+        - sudo make
 
