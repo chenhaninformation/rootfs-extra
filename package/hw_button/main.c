@@ -175,7 +175,7 @@ int listining_loop(int fd, int time)
 				ret = pthread_cancel(reset_wait_thread_id);
 				if (0 != ret) {
 					perror("Can not cancel a thread!\n");
-					continue
+					continue;
 				}
 			}
 		}
