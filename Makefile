@@ -1,4 +1,4 @@
-# Copyright (c) 2018 Hunan ChenHan Information Technology Co., Ltd.
+# Copyright (C) 2018-2019 Hunan ChenHan Information Technology Co., Ltd.
 #
 # SPDX-License-Identifier: GPL-3.0
 #
@@ -37,7 +37,7 @@ export DL_DIR := $(shell mkdir -p $(TOP_DIR)/$(DL_DIR_NAME) && \
 # Clean targets
 export CLEAN_TARGETS := $(BUILD_DIR)
 
-export DISTCLEAN_TARGETS := $(DOWNLOAD_DIR)
+export DISTCLEAN_TARGETS := $(DL_DIR)
 
 ##############################################################################
 #									     #
