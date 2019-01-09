@@ -9,6 +9,7 @@ addons:
                 packages:
                         - make
                         - gcc-aarch64-linux-gnu
+                        - libc-dev-arm64-cross
                         - qemu-user-static
 
 script:
