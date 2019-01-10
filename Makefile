@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: GPL-3.0
 #
-# @author Ding Tao <miyatsu@qq.com>
+# @author Ding Tao <i@dingtao.org>
 # 
 # @date 28th Nov, 2018
 #
@@ -11,13 +11,6 @@
 #
 # This Makefile is the top level Makefile of this project, and it will somehow
 # include sub Makefile in this repo.
-#
-
-##############################################################################
-#									     #
-#			Global Variables Definition			     #
-#									     #
-##############################################################################
 
 # Define sub directory name of build and download
 BUILD_DIR_NAME		:= build
@@ -75,41 +68,4 @@ distclean: clean
 	-rm -rf $(DISTCLEAN_TARGETS)
 
 .PHONY: image overlay system clean distclean
-
-##############################################################################
-#									     #
-#			Sub target definition				     #
-#									     #
-##############################################################################
-
-
-_all: button
-
-button:
-	@$(MAKE) -C package/hw_button
-
-download:
-	@$(MAKE) -C package/iso
-
-.PHONY: help install image clean distclean
-
-help:
-	@echo "Usage : make <target>"
-	@echo "Where the target can be one of the following options"
-	@echo "Help informations:"
-	@echo "    help         - Show help message"
-	@echo "Cleaning targets:"
-	@echo "    clean        - Clean build file, but leave download files"
-	@echo "    distclean    - Clean all build process generated files"
-
-install:
-	echo
-
-IMAGE_DIR_NAME := image
-IMAGE_DIR := ${BUILD_DIR}/${IMAGE_DIR_NAME}
-
-_image:
-	$(TOP_DIR)/scripts/gen_image.sh $(TOP_DIR) $(DL_DIR) $(BUILD_DIR) \
-		$(IMAGE_DIR)
-
 

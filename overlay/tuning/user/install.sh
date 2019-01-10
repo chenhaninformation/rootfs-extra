@@ -1,10 +1,10 @@
 #!/bin/sh
-
-# Copyright (c) 2018 Hunan ChenHan Information Technology Co., Ltd.
+#
+# Copyright (C) 2018-2019 Hunan ChenHan Information Technology Co., Ltd.
 #
 # SPDX-License-Identifier: GPL-3.0
 #
-# @author Ding Tao <miyatsu@qq.com>
+# @author Ding Tao <i@dingtao.org>
 #
 # @date 3rd Dec, 2018
 #

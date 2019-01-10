@@ -5,7 +5,7 @@
  */
 
 /**
- * @author Ding Tao <miyatsu@qq.com>
+ * @author Ding Tao <i@dingtao.org>
  *
  * @date 8th Nov, 2018
  *
@@ -17,7 +17,6 @@
  *	  mark "ch_need_reset" U-boot environment variable as 1, then reboot,
  *	  the U-boot will pass "ch_need_reset" to ramfs to make sure the user
  *	  config file will be all erased before re-entry the system.
- *
  * */
 
 #include <stdio.h>
