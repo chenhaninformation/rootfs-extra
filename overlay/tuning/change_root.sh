@@ -25,11 +25,11 @@ build_tuning () {
 	cp /usr/bin/qemu-aarch64-static ${ROOTFS_DIR}/usr/bin/
 
 	# Copy all packages to root file system
-	mkdir -p ${ROOTFS_DIR}/tmp/chenhan
-	cp -R ./ ${ROOTFS_DIR}/tmp/chenhan
+	mkdir -p ${ROOTFS_DIR}/chenhan
+	cp -R ./ ${ROOTFS_DIR}/chenhan/
 
 	# Change to the new root file system
-	chroot ${ROOTFS_DIR} /tmp/chenhan/do_tuning.sh
+	chroot ${ROOTFS_DIR} /chenhan/do_tuning.sh
 	if [ $? -ne 0 ]
 	then
 		echo "Chroot Error!"
@@ -38,16 +38,17 @@ build_tuning () {
 
 	# Once chroot return, now already in host, so we can safily remove
 	# some files
+	echo "Successfuly back to host!"
 
 	# Check state
-	if [ -e ${ROOTFS_DIR}/tmp/chenhan/error ]
+	if [ -e ${ROOTFS_DIR}/chenhan/error ]
 	then
 		echo "Some thing goes wrong in chroot!"
 		exit 1
 	fi
 
 	# Remove all package files
-	rm -rf ${ROOTFS_DIR}/tmp/chenhan
+	rm -rf ${ROOTFS_DIR}/chenhan
 
 	# Remove qemu emulator
 	rm ${ROOTFS_DIR}/usr/bin/qemu-aarch64-static
