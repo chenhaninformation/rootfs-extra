@@ -15,3 +15,4 @@ _all:
 	cp -R etc/ ${ROOTFS_DIR}/
 
 .PHONY: _all
+

@@ -15,3 +15,4 @@ change_root:
 	./change_root.sh $(ROOTFS_DIR)
 
 .PHONY: change_root
+
