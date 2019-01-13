@@ -12,7 +12,8 @@
 all: _all
 
 _all:
-	cp -R etc/ ${ROOTFS_DIR}/
+	cp -R ./ ${ROOTFS_DIR}/		\
+	rm ${ROOTFS_DIR}/Makefile
 
 .PHONY: _all
 
