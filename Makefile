@@ -43,23 +43,23 @@ export IMAGE_DIR	:= $(shell mkdir -p				\
 export CLEAN_TARGETS		:= $(BUILD_DIR)
 export DISTCLEAN_TARGETS	:= $(DL_DIR)
 
-all: image
+all: rootfs
 
 # This target will pack all files in $(ROOTFS_DIR) to a single image file
 # to $(IMAGE_DIR)/image.tar.gz
-image: overlay
+rootfs: overlay
 	tar -cjvf ${IMAGE_DIR}/rootfs.tar.bz2 -C ${ROOTFS_DIR} .	\
 		> /dev/null
 
 # This target will add/deleate/alter file system's file after all files are
 # copied to $(ROOTFS_DIR)
 overlay: system
-	@$(MAKE) -C overlay
+	@$(MAKE) -C rootfs/overlay
 
 # This target will download/compile a functional file system like
 # Debian/Ubuntu, and copy all files to $(ROOTFS_DIR)
 system:
-	@$(MAKE) -C system
+	@$(MAKE) -C rootfs/system
 
 clean:
 	-rm -rf $(CLEAN_TARGETS)
@@ -67,5 +67,5 @@ clean:
 distclean: clean
 	-rm -rf $(DISTCLEAN_TARGETS)
 
-.PHONY: image overlay system clean distclean
+.PHONY: rootfs overlay system clean distclean
 

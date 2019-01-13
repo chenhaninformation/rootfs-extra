@@ -13,5 +13,5 @@ addons:
                         - qemu-user-static
 
 script:
-        - sudo make image
+        - sudo make rootfs
 
