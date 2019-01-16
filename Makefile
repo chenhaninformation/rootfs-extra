@@ -43,7 +43,9 @@ export IMAGE_DIR	:= $(shell mkdir -p				\
 export CLEAN_TARGETS		:= $(BUILD_DIR)
 export DISTCLEAN_TARGETS	:= $(DL_DIR)
 
-all: rootfs
+all: rootfs u-boot
+
+### Rootfs related target
 
 # This target will pack all files in $(ROOTFS_DIR) to a single image file
 # to $(IMAGE_DIR)/image.tar.gz
@@ -61,11 +63,16 @@ overlay: system
 system:
 	@$(MAKE) -C rootfs/system
 
+### U-boot related target
+
+u-boot:
+	@$(MAKE) -C u-boot
+
 clean:
 	-rm -rf $(CLEAN_TARGETS)
 
 distclean: clean
 	-rm -rf $(DISTCLEAN_TARGETS)
 
-.PHONY: rootfs overlay system clean distclean
+.PHONY: rootfs overlay system u-boot clean distclean
 
