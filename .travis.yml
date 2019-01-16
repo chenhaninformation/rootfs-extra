@@ -11,7 +11,8 @@ addons:
                         - gcc-aarch64-linux-gnu
                         - libc-dev-arm64-cross
                         - qemu-user-static
+                        - git
 
 script:
-        - sudo make rootfs
+        - sudo make
 
