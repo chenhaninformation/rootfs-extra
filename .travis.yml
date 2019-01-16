@@ -12,6 +12,8 @@ addons:
                         - libc-dev-arm64-cross
                         - qemu-user-static
                         - git
+                        - device-tree-compiler
+                        - gcc-arm-linux-gnueabi
 
 script:
         - sudo make
