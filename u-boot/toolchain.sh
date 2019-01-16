@@ -41,12 +41,14 @@ build_extract () {
 		exit 1
 	fi
 
-	tar xvf ${DL_DIR}/${FILE_NAME}.tar.xz -C ${TOOLCHAIN_DIR}
+	echo "Start to unpacking the toolchain..."
+	tar xvf ${DL_DIR}/${FILE_NAME}.tar.xz -C ${TOOLCHAIN_DIR} > /dev/null
 	if [ $? -ne 0 ]
 	then
 		echo "Unpacking Toolchain Error!"
 		exit 1
 	fi
+	echo "Unpacking toolchain done!"
 
 	# Origin tar.xz file have only one directory, let's move all binary
 	# files up to the ${TOOLCHAIN_DIR} directory
