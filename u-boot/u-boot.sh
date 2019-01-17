@@ -220,7 +220,7 @@ build_atf () {
 	make distclean
 	make -j8 BL33=${BUILD_DIR}/u-boot-512m-spi.bin	\
 		CLOCKSPRESET=CPU_1200_DDR_750		\
-		DDR_TOPOLOGY=0				\
+		DDR_TOPLOGY=0				\
 		BOOTDEV=SPINOR				\
 		WTP=${BUILD_DIR}/atf-tool		\
 		PLAT=a3700 all fip
@@ -238,7 +238,7 @@ build_atf () {
 	make distclean
 	make -j8 BL33=${BUILD_DIR}/u-boot-512m-mmc.bin	\
 		CLOCKSPRESET=CPU_1200_DDR_750		\
-		DDR_TOPOLOGY=0				\
+		DDR_TOPLOGY=0				\
 		BOOTDEV=EMMCNORM			\
 		PARTNUM=1				\
 		WTP=${BUILD_DIR}/atf-tool		\
@@ -259,7 +259,7 @@ build_atf () {
 	make distclean
 	make -j8 BL33=${BUILD_DIR}/u-boot-1g-spi.bin	\
 		CLOCKSPRESET=CPU_1200_DDR_750		\
-		DDR_TOPOLOGY=4				\
+		DDR_TOPLOGY=4				\
 		BOOTDEV=SPINOR				\
 		WTP=${BUILD_DIR}/atf-tool		\
 		PLAT=a3700 all fip
@@ -277,7 +277,7 @@ build_atf () {
 	make distclean
 	make -j8 BL33=${BUILD_DIR}/u-boot-1g-mmc.bin	\
 		CLOCKSPRESET=CPU_1200_DDR_750		\
-		DDR_TOPOLOGY=4				\
+		DDR_TOPLOGY=4				\
 		BOOTDEV=EMMCNORM			\
 		PARTNUM=1				\
 		WTP=${BUILD_DIR}/atf-tool		\
@@ -297,7 +297,7 @@ build_atf () {
 	make distclean
 	make -j8 BL33=${BUILD_DIR}/u-boot-1g-spi.bin	\
 		CLOCKSPRESET=CPU_1200_DDR_750		\
-		DDR_TOPOLOGY=2				\
+		DDR_TOPLOGY=2				\
 		BOOTDEV=SPINOR				\
 		WTP=${BUILD_DIR}/atf-tool		\
 		PLAT=a3700 all fip
@@ -315,7 +315,7 @@ build_atf () {
 	make distclean
 	make -j8 BL33=${BUILD_DIR}/u-boot-1g-mmc.bin	\
 		CLOCKSPRESET=CPU_1200_DDR_750		\
-		DDR_TOPOLOGY=2				\
+		DDR_TOPLOGY=2				\
 		BOOTDEV=EMMCNORM			\
 		PARTNUM=1				\
 		WTP=${BUILD_DIR}/atf-tool		\
@@ -335,7 +335,7 @@ build_atf () {
 	make distclean
 	make -j8 BL33=${BUILD_DIR}/u-boot-2g-spi.bin	\
 		CLOCKSPRESET=CPU_1200_DDR_750		\
-		DDR_TOPOLOGY=7				\
+		DDR_TOPLOGY=7				\
 		BOOTDEV=SPINOR				\
 		WTP=${BUILD_DIR}/atf-tool		\
 		PLAT=a3700 all fip
@@ -353,7 +353,7 @@ build_atf () {
 	make distclean
 	make -j8 BL33=${BUILD_DIR}/u-boot-2g-mmc.bin	\
 		CLOCKSPRESET=CPU_1200_DDR_750		\
-		DDR_TOPOLOGY=7				\
+		DDR_TOPLOGY=7				\
 		BOOTDEV=EMMCNORM			\
 		PARTNUM=1				\
 		WTP=${BUILD_DIR}/atf-tool		\
