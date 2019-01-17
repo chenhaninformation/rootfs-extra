@@ -116,6 +116,9 @@ build_clone_atf_tool() {
 	cat ${BUILD_DIR}/atf-tool/.git/refs/heads/${ATF_TOOL_BRANCH}	\
 		>> ${BUILD_LABEL_FILE}
 	echo "" >> ${BUILD_LABEL_FILE}
+
+	mkdir -p ${BUILD_DIR}/atf-tool-backup
+	cp -R ${BUILD_DIR}/atf-tool/* ${BUILD_DIR}/atf-tool-backup
 }
 
 build_export_toolchain() {
@@ -196,17 +199,8 @@ build_u_boot () {
 }
 
 build_atf_tool_clean () {
-	rm -rf ${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/*.d		\
-		${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.d	\
-		${BUILD_DIR}/atf-tool/wtmi/*.d
-
-	rm -rf ${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/*.o		\
-		${BUILD_DDR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.o
-
-	rm -rf ${BUILD_DIR}/atf-tool/wtmi/*.o
-
-	rm -rf ${BUILD_DIR}/atf-tool/ddr/tim_ddr/clocks_ddr.txt
-	rm -rf ${BUILD_DIR}/atf-tool/ddr/tim_ddr/ddr_static.txt
+	rm -rf ${BUILD_DIR}/atf-tool/*
+	cp -R ${BUILD_DIR}/atf-tool-backup/* ${BUILD_DIR}/atf-tool/
 }
 
 build_atf () {
@@ -239,8 +233,9 @@ build_atf () {
 	make distclean
 	build_atf_tool_clean
 	export BL33=${BUILD_DIR}/u-boot-512m-spi.bin
-	make -j8 CLOCKSPRESET=CPU_1200_DDR_750			\
+	make -j8 CLOCKSPRESET=CPU_1000_DDR_800			\
 		DDR_TOPOLOGY=0					\
+		USE_COHERENT_MEM=0				\
 		BOOTDEV=SPINOR					\
 		WTP=${BUILD_DIR}/atf-tool			\
 		PLAT=a3700 all fip
@@ -258,8 +253,9 @@ build_atf () {
 	make distclean
 	build_atf_tool_clean
 	export BL33=${BUILD_DIR}/u-boot-512m-mmc.bin
-	make -j8 CLOCKSPRESET=CPU_1200_DDR_750			\
+	make -j8 CLOCKSPRESET=CPU_1000_DDR_800			\
 		DDR_TOPOLOGY=0					\
+		USE_COHERENT_MEM=0				\
 		BOOTDEV=EMMCNORM				\
 		PARTNUM=1					\
 		WTP=${BUILD_DIR}/atf-tool			\
@@ -280,8 +276,9 @@ build_atf () {
 	make distclean
 	build_atf_tool_clean
 	export BL33=${BUILD_DIR}/u-boot-1g-spi.bin
-	make -j8 CLOCKSPRESET=CPU_1200_DDR_750			\
+	make -j8 CLOCKSPRESET=CPU_1000_DDR_800			\
 		DDR_TOPOLOGY=4					\
+		USE_COHERENT_MEM=0				\
 		BOOTDEV=SPINOR					\
 		WTP=${BUILD_DIR}/atf-tool			\
 		PLAT=a3700 all fip
@@ -299,8 +296,9 @@ build_atf () {
 	make distclean
 	build_atf_tool_clean
 	export BL33=${BUILD_DIR}/u-boot-1g-mmc.bin
-	make -j8 CLOCKSPRESET=CPU_1200_DDR_750			\
+	make -j8 CLOCKSPRESET=CPU_1000_DDR_800			\
 		DDR_TOPOLOGY=4					\
+		USE_COHERENT_MEM=0				\
 		BOOTDEV=EMMCNORM				\
 		PARTNUM=1					\
 		WTP=${BUILD_DIR}/atf-tool			\
@@ -320,8 +318,9 @@ build_atf () {
 	make distclean
 	build_atf_tool_clean
 	export BL33=${BUILD_DIR}/u-boot-1g-spi.bin
-	make -j8 CLOCKSPRESET=CPU_1200_DDR_750			\
+	make -j8 CLOCKSPRESET=CPU_1000_DDR_800			\
 		DDR_TOPOLOGY=2					\
+		USE_COHERENT_MEM=0				\
 		BOOTDEV=SPINOR					\
 		WTP=${BUILD_DIR}/atf-tool			\
 		PLAT=a3700 all fip
@@ -339,8 +338,9 @@ build_atf () {
 	make distclean
 	build_atf_tool_clean
 	export BL33=${BUILD_DIR}/u-boot-1g-mmc.bin
-	make -j8 CLOCKSPRESET=CPU_1200_DDR_750			\
+	make -j8 CLOCKSPRESET=CPU_1000_DDR_800			\
 		DDR_TOPOLOGY=2					\
+		USE_COHERENT_MEM=0				\
 		BOOTDEV=EMMCNORM				\
 		PARTNUM=1					\
 		WTP=${BUILD_DIR}/atf-tool			\
@@ -360,8 +360,9 @@ build_atf () {
 	make distclean
 	build_atf_tool_clean
 	export BL33=${BUILD_DIR}/u-boot-2g-spi.bin
-	make -j8 CLOCKSPRESET=CPU_1200_DDR_750			\
+	make -j8 CLOCKSPRESET=CPU_1000_DDR_800			\
 		DDR_TOPOLOGY=7					\
+		USE_COHERENT_MEM=0				\
 		BOOTDEV=SPINOR					\
 		WTP=${BUILD_DIR}/atf-tool			\
 		PLAT=a3700 all fip
@@ -379,8 +380,9 @@ build_atf () {
 	make distclean
 	build_atf_tool_clean
 	export BL33=${BUILD_DIR}/u-boot-2g-mmc.bin
-	make -j8 CLOCKSPRESET=CPU_1200_DDR_750			\
+	make -j8 CLOCKSPRESET=CPU_1000_DDR_800			\
 		DDR_TOPOLOGY=7					\
+		USE_COHERENT_MEM=0				\
 		BOOTDEV=EMMCNORM				\
 		PARTNUM=1					\
 		WTP=${BUILD_DIR}/atf-tool			\
