@@ -227,8 +227,8 @@ build_atf () {
 		${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.d	\
 		${BUILD_DIR}/atf-tool/wtmi/*.d			\
 		${BUILD_DIR}/atf-tool/ddr/tim_ddr/clocks_ddr.txt
-	make -j8 BL33=${BUILD_DIR}/u-boot-512m-spi.bin		\
-		CLOCKSPRESET=CPU_1200_DDR_750			\
+	export BL33=${BUILD_DIR}/u-boot-512m-spi.bin
+	make -j8 CLOCKSPRESET=CPU_1200_DDR_750			\
 		DDR_TOPLOGY=0					\
 		BOOTDEV=SPINOR					\
 		WTP=${BUILD_DIR}/atf-tool			\
@@ -249,8 +249,8 @@ build_atf () {
 		${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.d	\
 		${BUILD_DIR}/atf-tool/wtmi/*.d			\
 		${BUILD_DIR}/atf-tool/ddr/tim_ddr/clocks_ddr.txt
-	make -j8 BL33=${BUILD_DIR}/u-boot-512m-mmc.bin		\
-		CLOCKSPRESET=CPU_1200_DDR_750			\
+	export BL33=${BUILD_DIR}/u-boot-512m-mmc.bin
+	make -j8 CLOCKSPRESET=CPU_1200_DDR_750			\
 		DDR_TOPLOGY=0					\
 		BOOTDEV=EMMCNORM				\
 		PARTNUM=1					\
@@ -274,8 +274,8 @@ build_atf () {
 		${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.d	\
 		${BUILD_DIR}/atf-tool/wtmi/*.d			\
 		${BUILD_DIR}/atf-tool/ddr/tim_ddr/clocks_ddr.txt
-	make -j8 BL33=${BUILD_DIR}/u-boot-1g-spi.bin		\
-		CLOCKSPRESET=CPU_1200_DDR_750			\
+	export BL33=${BUILD_DIR}/u-boot-1g-spi.bin
+	make -j8 CLOCKSPRESET=CPU_1200_DDR_750			\
 		DDR_TOPLOGY=4					\
 		BOOTDEV=SPINOR					\
 		WTP=${BUILD_DIR}/atf-tool			\
@@ -296,8 +296,8 @@ build_atf () {
 		${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.d	\
 		${BUILD_DIR}/atf-tool/wtmi/*.d			\
 		${BUILD_DIR}/atf-tool/ddr/tim_ddr/clocks_ddr.txt
-	make -j8 BL33=${BUILD_DIR}/u-boot-1g-mmc.bin		\
-		CLOCKSPRESET=CPU_1200_DDR_750			\
+	export BL33=${BUILD_DIR}/u-boot-1g-mmc.bin
+	make -j8 CLOCKSPRESET=CPU_1200_DDR_750			\
 		DDR_TOPLOGY=4					\
 		BOOTDEV=EMMCNORM				\
 		PARTNUM=1					\
@@ -320,8 +320,8 @@ build_atf () {
 		${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.d	\
 		${BUILD_DIR}/atf-tool/wtmi/*.d			\
 		${BUILD_DIR}/atf-tool/ddr/tim_ddr/clocks_ddr.txt
-	make -j8 BL33=${BUILD_DIR}/u-boot-1g-spi.bin		\
-		CLOCKSPRESET=CPU_1200_DDR_750			\
+	export BL33=${BUILD_DIR}/u-boot-1g-spi.bin
+	make -j8 CLOCKSPRESET=CPU_1200_DDR_750			\
 		DDR_TOPLOGY=2					\
 		BOOTDEV=SPINOR					\
 		WTP=${BUILD_DIR}/atf-tool			\
@@ -342,8 +342,8 @@ build_atf () {
 		${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.d	\
 		${BUILD_DIR}/atf-tool/wtmi/*.d			\
 		${BUILD_DIR}/atf-tool/ddr/tim_ddr/clocks_ddr.txt
-	make -j8 BL33=${BUILD_DIR}/u-boot-1g-mmc.bin		\
-		CLOCKSPRESET=CPU_1200_DDR_750			\
+	export BL33=${BUILD_DIR}/u-boot-1g-mmc.bin
+	make -j8 CLOCKSPRESET=CPU_1200_DDR_750			\
 		DDR_TOPLOGY=2					\
 		BOOTDEV=EMMCNORM				\
 		PARTNUM=1					\
@@ -366,8 +366,8 @@ build_atf () {
 		${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.d	\
 		${BUILD_DIR}/atf-tool/wtmi/*.d			\
 		${BUILD_DIR}/atf-tool/ddr/tim_ddr/clocks_ddr.txt
-	make -j8 BL33=${BUILD_DIR}/u-boot-2g-spi.bin		\
-		CLOCKSPRESET=CPU_1200_DDR_750			\
+	export BL33=${BUILD_DIR}/u-boot-2g-spi.bin
+	make -j8 CLOCKSPRESET=CPU_1200_DDR_750			\
 		DDR_TOPLOGY=7					\
 		BOOTDEV=SPINOR					\
 		WTP=${BUILD_DIR}/atf-tool			\
@@ -388,8 +388,8 @@ build_atf () {
 		${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.d	\
 		${BUILD_DIR}/atf-tool/wtmi/*.d			\
 		${BUILD_DIR}/atf-tool/ddr/tim_ddr/clocks_ddr.txt
-	make -j8 BL33=${BUILD_DIR}/u-boot-2g-mmc.bin		\
-		CLOCKSPRESET=CPU_1200_DDR_750			\
+	export BL33=${BUILD_DIR}/u-boot-2g-mmc.bin
+	make -j8 CLOCKSPRESET=CPU_1200_DDR_750			\
 		DDR_TOPLOGY=7					\
 		BOOTDEV=EMMCNORM				\
 		PARTNUM=1					\
