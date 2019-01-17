@@ -195,6 +195,20 @@ build_u_boot () {
 	cd -
 }
 
+build_atf_tool_clean () {
+	rm -rf ${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/*.d		\
+		${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.d	\
+		${BUILD_DIR}/atf-tool/wtmi/*.d
+
+	rm -rf ${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/*.o		\
+		${BUILD_DDR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.o
+
+	rm -rf ${BUILD_DIR}/atf-tool/wtmi/*.o
+
+	rm -rf ${BUILD_DIR}/atf-tool/ddr/tim_ddr/clocks_ddr.txt
+	rm -rf ${BUILD_DIR}/atf-tool/ddr/tim_ddr/ddr_static.txt
+}
+
 build_atf () {
 	cd ${BUILD_DIR}/atf
 
@@ -223,13 +237,10 @@ build_atf () {
 	### Build DDR3 512M 1CS
 	## Build DDR3 512M 1CS SPI
 	make distclean
-	rm -rf ${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/*.d		\
-		${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.d	\
-		${BUILD_DIR}/atf-tool/wtmi/*.d			\
-		${BUILD_DIR}/atf-tool/ddr/tim_ddr/clocks_ddr.txt
+	build_atf_tool_clean
 	export BL33=${BUILD_DIR}/u-boot-512m-spi.bin
 	make -j8 CLOCKSPRESET=CPU_1200_DDR_750			\
-		DDR_TOPLOGY=0					\
+		DDR_TOPOLOGY=0					\
 		BOOTDEV=SPINOR					\
 		WTP=${BUILD_DIR}/atf-tool			\
 		PLAT=a3700 all fip
@@ -245,13 +256,10 @@ build_atf () {
 
 	## Build DDR3 512M 1CS MMC
 	make distclean
-	rm -rf ${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/*.d		\
-		${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.d	\
-		${BUILD_DIR}/atf-tool/wtmi/*.d			\
-		${BUILD_DIR}/atf-tool/ddr/tim_ddr/clocks_ddr.txt
+	build_atf_tool_clean
 	export BL33=${BUILD_DIR}/u-boot-512m-mmc.bin
 	make -j8 CLOCKSPRESET=CPU_1200_DDR_750			\
-		DDR_TOPLOGY=0					\
+		DDR_TOPOLOGY=0					\
 		BOOTDEV=EMMCNORM				\
 		PARTNUM=1					\
 		WTP=${BUILD_DIR}/atf-tool			\
@@ -270,13 +278,10 @@ build_atf () {
 	### Build DDR3 1G 1CS
 	## Build DDR3 1G 1CS SPI
 	make distclean
-	rm -rf ${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/*.d		\
-		${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.d	\
-		${BUILD_DIR}/atf-tool/wtmi/*.d			\
-		${BUILD_DIR}/atf-tool/ddr/tim_ddr/clocks_ddr.txt
+	build_atf_tool_clean
 	export BL33=${BUILD_DIR}/u-boot-1g-spi.bin
 	make -j8 CLOCKSPRESET=CPU_1200_DDR_750			\
-		DDR_TOPLOGY=4					\
+		DDR_TOPOLOGY=4					\
 		BOOTDEV=SPINOR					\
 		WTP=${BUILD_DIR}/atf-tool			\
 		PLAT=a3700 all fip
@@ -292,13 +297,10 @@ build_atf () {
 
 	## Build DDR3 1G 1CS MMC
 	make distclean
-	rm -rf ${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/*.d		\
-		${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.d	\
-		${BUILD_DIR}/atf-tool/wtmi/*.d			\
-		${BUILD_DIR}/atf-tool/ddr/tim_ddr/clocks_ddr.txt
+	build_atf_tool_clean
 	export BL33=${BUILD_DIR}/u-boot-1g-mmc.bin
 	make -j8 CLOCKSPRESET=CPU_1200_DDR_750			\
-		DDR_TOPLOGY=4					\
+		DDR_TOPOLOGY=4					\
 		BOOTDEV=EMMCNORM				\
 		PARTNUM=1					\
 		WTP=${BUILD_DIR}/atf-tool			\
@@ -316,13 +318,10 @@ build_atf () {
 	### Build DDR3 1G 2CS
 	## Build DDR3 1G 2CS SPI
 	make distclean
-	rm -rf ${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/*.d		\
-		${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.d	\
-		${BUILD_DIR}/atf-tool/wtmi/*.d			\
-		${BUILD_DIR}/atf-tool/ddr/tim_ddr/clocks_ddr.txt
+	build_atf_tool_clean
 	export BL33=${BUILD_DIR}/u-boot-1g-spi.bin
 	make -j8 CLOCKSPRESET=CPU_1200_DDR_750			\
-		DDR_TOPLOGY=2					\
+		DDR_TOPOLOGY=2					\
 		BOOTDEV=SPINOR					\
 		WTP=${BUILD_DIR}/atf-tool			\
 		PLAT=a3700 all fip
@@ -338,13 +337,10 @@ build_atf () {
 
 	## Build DDR3 1G 2CS MMC
 	make distclean
-	rm -rf ${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/*.d		\
-		${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.d	\
-		${BUILD_DIR}/atf-tool/wtmi/*.d			\
-		${BUILD_DIR}/atf-tool/ddr/tim_ddr/clocks_ddr.txt
+	build_atf_tool_clean
 	export BL33=${BUILD_DIR}/u-boot-1g-mmc.bin
 	make -j8 CLOCKSPRESET=CPU_1200_DDR_750			\
-		DDR_TOPLOGY=2					\
+		DDR_TOPOLOGY=2					\
 		BOOTDEV=EMMCNORM				\
 		PARTNUM=1					\
 		WTP=${BUILD_DIR}/atf-tool			\
@@ -362,13 +358,10 @@ build_atf () {
 	### Build DDR3 2G 2CS
 	## Build DDR3 2G 2CS SPI
 	make distclean
-	rm -rf ${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/*.d		\
-		${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.d	\
-		${BUILD_DIR}/atf-tool/wtmi/*.d			\
-		${BUILD_DIR}/atf-tool/ddr/tim_ddr/clocks_ddr.txt
+	build_atf_tool_clean
 	export BL33=${BUILD_DIR}/u-boot-2g-spi.bin
 	make -j8 CLOCKSPRESET=CPU_1200_DDR_750			\
-		DDR_TOPLOGY=7					\
+		DDR_TOPOLOGY=7					\
 		BOOTDEV=SPINOR					\
 		WTP=${BUILD_DIR}/atf-tool			\
 		PLAT=a3700 all fip
@@ -384,13 +377,10 @@ build_atf () {
 
 	## Build DDR3 2G 2CS MMC
 	make distclean
-	rm -rf ${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/*.d		\
-		${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.d	\
-		${BUILD_DIR}/atf-tool/wtmi/*.d			\
-		${BUILD_DIR}/atf-tool/ddr/tim_ddr/clocks_ddr.txt
+	build_atf_tool_clean
 	export BL33=${BUILD_DIR}/u-boot-2g-mmc.bin
 	make -j8 CLOCKSPRESET=CPU_1200_DDR_750			\
-		DDR_TOPLOGY=7					\
+		DDR_TOPOLOGY=7					\
 		BOOTDEV=EMMCNORM				\
 		PARTNUM=1					\
 		WTP=${BUILD_DIR}/atf-tool			\
