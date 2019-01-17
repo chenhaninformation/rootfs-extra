@@ -223,154 +223,186 @@ build_atf () {
 	### Build DDR3 512M 1CS
 	## Build DDR3 512M 1CS SPI
 	make distclean
-	make -j8 BL33=${BUILD_DIR}/u-boot-512m-spi.bin	\
-		CLOCKSPRESET=CPU_1200_DDR_750		\
-		DDR_TOPLOGY=0				\
-		BOOTDEV=SPINOR				\
-		WTP=${BUILD_DIR}/atf-tool		\
+	rm -rf ${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/*.d		\
+		${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.d	\
+		${BUILD_DIR}/atf-tool/wtmi/*.d			\
+		${BUILD_DIR}/atf-tool/ddr/tim_ddr/clocks_ddr.txt
+	make -j8 BL33=${BUILD_DIR}/u-boot-512m-spi.bin		\
+		CLOCKSPRESET=CPU_1200_DDR_750			\
+		DDR_TOPLOGY=0					\
+		BOOTDEV=SPINOR					\
+		WTP=${BUILD_DIR}/atf-tool			\
 		PLAT=a3700 all fip
 	if [ $? -ne 0 ]
 	then
 		echo "Build ddr3-512m-1cs-spi failed!"
 		exit 1
 	fi
-	cp build/a3700/release/flash-image.bin		\
+	cp build/a3700/release/flash-image.bin			\
 		${IMAGE_DIR}/u-boot/ddr3/512m/1cs/spi
-	cp -R build/a3700/release/uart-images		\
+	cp -R build/a3700/release/uart-images			\
 		${IMAGE_DIR}/u-boot/ddr3/512m/1cs/spi
 
 	## Build DDR3 512M 1CS MMC
 	make distclean
-	make -j8 BL33=${BUILD_DIR}/u-boot-512m-mmc.bin	\
-		CLOCKSPRESET=CPU_1200_DDR_750		\
-		DDR_TOPLOGY=0				\
-		BOOTDEV=EMMCNORM			\
-		PARTNUM=1				\
-		WTP=${BUILD_DIR}/atf-tool		\
+	rm -rf ${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/*.d		\
+		${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.d	\
+		${BUILD_DIR}/atf-tool/wtmi/*.d			\
+		${BUILD_DIR}/atf-tool/ddr/tim_ddr/clocks_ddr.txt
+	make -j8 BL33=${BUILD_DIR}/u-boot-512m-mmc.bin		\
+		CLOCKSPRESET=CPU_1200_DDR_750			\
+		DDR_TOPLOGY=0					\
+		BOOTDEV=EMMCNORM				\
+		PARTNUM=1					\
+		WTP=${BUILD_DIR}/atf-tool			\
 		PLAT=a3700 all fip
 	if [ $? -ne 0 ]
 	then
 		echo "Build ddr3-512m-1cs-mmc failed!"
 		exit 1
 	fi
-	cp build/a3700/release/flash-image.bin		\
+	cp build/a3700/release/flash-image.bin			\
 		${IMAGE_DIR}/u-boot/ddr3/512m/1cs/mmc
-	cp -R build/a3700/release/uart-images		\
+	cp -R build/a3700/release/uart-images			\
 		${IMAGE_DIR}/u-boot/ddr3/512m/1cs/mmc
 
 	#### Build DDR3 1G
 	### Build DDR3 1G 1CS
 	## Build DDR3 1G 1CS SPI
 	make distclean
-	make -j8 BL33=${BUILD_DIR}/u-boot-1g-spi.bin	\
-		CLOCKSPRESET=CPU_1200_DDR_750		\
-		DDR_TOPLOGY=4				\
-		BOOTDEV=SPINOR				\
-		WTP=${BUILD_DIR}/atf-tool		\
+	rm -rf ${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/*.d		\
+		${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.d	\
+		${BUILD_DIR}/atf-tool/wtmi/*.d			\
+		${BUILD_DIR}/atf-tool/ddr/tim_ddr/clocks_ddr.txt
+	make -j8 BL33=${BUILD_DIR}/u-boot-1g-spi.bin		\
+		CLOCKSPRESET=CPU_1200_DDR_750			\
+		DDR_TOPLOGY=4					\
+		BOOTDEV=SPINOR					\
+		WTP=${BUILD_DIR}/atf-tool			\
 		PLAT=a3700 all fip
 	if [ $? -ne 0 ]
 	then
 		echo "Build ddr3-1g-1cs-spi failed!"
 		exit 1
 	fi
-	cp build/a3700/release/flash-image.bin		\
+	cp build/a3700/release/flash-image.bin			\
 		${IMAGE_DIR}/u-boot/ddr3/1g/1cs/spi
-	cp -R build/a3700/release/uart-images		\
+	cp -R build/a3700/release/uart-images			\
 		${IMAGE_DIR}/u-boot/ddr3/1g/1cs/spi
 
 	## Build DDR3 1G 1CS MMC
 	make distclean
-	make -j8 BL33=${BUILD_DIR}/u-boot-1g-mmc.bin	\
-		CLOCKSPRESET=CPU_1200_DDR_750		\
-		DDR_TOPLOGY=4				\
-		BOOTDEV=EMMCNORM			\
-		PARTNUM=1				\
-		WTP=${BUILD_DIR}/atf-tool		\
+	rm -rf ${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/*.d		\
+		${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.d	\
+		${BUILD_DIR}/atf-tool/wtmi/*.d			\
+		${BUILD_DIR}/atf-tool/ddr/tim_ddr/clocks_ddr.txt
+	make -j8 BL33=${BUILD_DIR}/u-boot-1g-mmc.bin		\
+		CLOCKSPRESET=CPU_1200_DDR_750			\
+		DDR_TOPLOGY=4					\
+		BOOTDEV=EMMCNORM				\
+		PARTNUM=1					\
+		WTP=${BUILD_DIR}/atf-tool			\
 		PLAT=a3700 all fip
 	if [ $? -ne 0 ]
 	then
 		echo "Build ddr3-1g-1cs-mmc failed!"
 		exit 1
 	fi
-	cp build/a3700/release/flash-image.bin		\
+	cp build/a3700/release/flash-image.bin			\
 		${IMAGE_DIR}/u-boot/ddr3/1g/1cs/mmc
-	cp -R build/a3700/release/uart-images		\
+	cp -R build/a3700/release/uart-images			\
 		${IMAGE_DIR}/u-boot/ddr3/1g/1cs/mmc
 
 	### Build DDR3 1G 2CS
 	## Build DDR3 1G 2CS SPI
 	make distclean
-	make -j8 BL33=${BUILD_DIR}/u-boot-1g-spi.bin	\
-		CLOCKSPRESET=CPU_1200_DDR_750		\
-		DDR_TOPLOGY=2				\
-		BOOTDEV=SPINOR				\
-		WTP=${BUILD_DIR}/atf-tool		\
+	rm -rf ${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/*.d		\
+		${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.d	\
+		${BUILD_DIR}/atf-tool/wtmi/*.d			\
+		${BUILD_DIR}/atf-tool/ddr/tim_ddr/clocks_ddr.txt
+	make -j8 BL33=${BUILD_DIR}/u-boot-1g-spi.bin		\
+		CLOCKSPRESET=CPU_1200_DDR_750			\
+		DDR_TOPLOGY=2					\
+		BOOTDEV=SPINOR					\
+		WTP=${BUILD_DIR}/atf-tool			\
 		PLAT=a3700 all fip
 	if [ $? -ne 0 ]
 	then
 		echo "Build ddr3-1g-2cs-spi failed!"
 		exit 1
 	fi
-	cp build/a3700/release/flash-image.bin		\
+	cp build/a3700/release/flash-image.bin			\
 		${IMAGE_DIR}/u-boot/ddr3/1g/2cs/spi
-	cp -R build/a3700/release/uart-images		\
+	cp -R build/a3700/release/uart-images			\
 		${IMAGE_DIR}/u-boot/ddr3/1g/2cs/spi
 
 	## Build DDR3 1G 2CS MMC
 	make distclean
-	make -j8 BL33=${BUILD_DIR}/u-boot-1g-mmc.bin	\
-		CLOCKSPRESET=CPU_1200_DDR_750		\
-		DDR_TOPLOGY=2				\
-		BOOTDEV=EMMCNORM			\
-		PARTNUM=1				\
-		WTP=${BUILD_DIR}/atf-tool		\
+	rm -rf ${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/*.d		\
+		${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.d	\
+		${BUILD_DIR}/atf-tool/wtmi/*.d			\
+		${BUILD_DIR}/atf-tool/ddr/tim_ddr/clocks_ddr.txt
+	make -j8 BL33=${BUILD_DIR}/u-boot-1g-mmc.bin		\
+		CLOCKSPRESET=CPU_1200_DDR_750			\
+		DDR_TOPLOGY=2					\
+		BOOTDEV=EMMCNORM				\
+		PARTNUM=1					\
+		WTP=${BUILD_DIR}/atf-tool			\
 		PLAT=a3700 all fip
 	if [ $? -ne 0 ]
 	then
 		echo "Build ddr3-1g-2cs-mmc failed!"
 		exit 1
 	fi
-	cp build/a3700/release/flash-image.bin		\
+	cp build/a3700/release/flash-image.bin			\
 		${IMAGE_DIR}/u-boot/ddr3/1g/2cs/mmc
-	cp -R build/a3700/release/uart-images		\
+	cp -R build/a3700/release/uart-images			\
 		${IMAGE_DIR}/u-boot/ddr3/1g/2cs/mmc
 
 	### Build DDR3 2G 2CS
 	## Build DDR3 2G 2CS SPI
 	make distclean
-	make -j8 BL33=${BUILD_DIR}/u-boot-2g-spi.bin	\
-		CLOCKSPRESET=CPU_1200_DDR_750		\
-		DDR_TOPLOGY=7				\
-		BOOTDEV=SPINOR				\
-		WTP=${BUILD_DIR}/atf-tool		\
+	rm -rf ${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/*.d		\
+		${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.d	\
+		${BUILD_DIR}/atf-tool/wtmi/*.d			\
+		${BUILD_DIR}/atf-tool/ddr/tim_ddr/clocks_ddr.txt
+	make -j8 BL33=${BUILD_DIR}/u-boot-2g-spi.bin		\
+		CLOCKSPRESET=CPU_1200_DDR_750			\
+		DDR_TOPLOGY=7					\
+		BOOTDEV=SPINOR					\
+		WTP=${BUILD_DIR}/atf-tool			\
 		PLAT=a3700 all fip
 	if [ $? -ne 0 ]
 	then
 		echo "Build ddr3-2g-2cs-spi failed!"
 		exit 1
 	fi
-	cp build/a3700/release/flash-image.bin		\
+	cp build/a3700/release/flash-image.bin			\
 		${IMAGE_DIR}/u-boot/ddr3/2g/2cs/spi
-	cp -R build/a3700/release/uart-images		\
+	cp -R build/a3700/release/uart-images			\
 		${IMAGE_DIR}/u-boot/ddr3/2g/2cs/spi
 
 	## Build DDR3 2G 2CS MMC
 	make distclean
-	make -j8 BL33=${BUILD_DIR}/u-boot-2g-mmc.bin	\
-		CLOCKSPRESET=CPU_1200_DDR_750		\
-		DDR_TOPLOGY=7				\
-		BOOTDEV=EMMCNORM			\
-		PARTNUM=1				\
-		WTP=${BUILD_DIR}/atf-tool		\
+	rm -rf ${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/*.d		\
+		${BUILD_DIR}/atf-tool/ddr/wtmi_ddr/ddrcore/*.d	\
+		${BUILD_DIR}/atf-tool/wtmi/*.d			\
+		${BUILD_DIR}/atf-tool/ddr/tim_ddr/clocks_ddr.txt
+	make -j8 BL33=${BUILD_DIR}/u-boot-2g-mmc.bin		\
+		CLOCKSPRESET=CPU_1200_DDR_750			\
+		DDR_TOPLOGY=7					\
+		BOOTDEV=EMMCNORM				\
+		PARTNUM=1					\
+		WTP=${BUILD_DIR}/atf-tool			\
 		PLAT=a3700 all fip
 	if [ $? -ne 0 ]
 	then
 		echo "Build ddr3-2g-2cs-mmc failed!"
 		exit 1
 	fi
-	cp build/a3700/release/flash-image.bin		\
+	cp build/a3700/release/flash-image.bin			\
 		${IMAGE_DIR}/u-boot/ddr3/2g/2cs/mmc
-	cp -R build/a3700/release/uart-images		\
+	cp -R build/a3700/release/uart-images			\
 		${IMAGE_DIR}/u-boot/ddr3/2g/2cs/mmc
 
 	cd -
