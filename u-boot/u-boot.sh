@@ -135,6 +135,8 @@ build_u_boot () {
 	cd ${BUILD_DIR}/u-boot
 	make distclean
 
+	aarch64-linux-gnu-gcc --version
+
 	make espressobin_512m_spi_defconfig
 	make -j8 DEVICE_TREE=armada-3720-espressobin
 	if [ $? -ne 0 ]
@@ -202,6 +204,9 @@ build_atf () {
 		rm -rf ${IMAGE_DIR}/u-boot
 	fi
 	mkdir ${IMAGE_DIR}/u-boot
+
+	aarch64-linux-gnu-gcc --version
+	arm-linux-gnueabi-gcc --version
 
 	mkdir -p ${IMAGE_DIR}/u-boot/ddr3/512m/1cs/spi
 	mkdir -p ${IMAGE_DIR}/u-boot/ddr3/512m/1cs/mmc
