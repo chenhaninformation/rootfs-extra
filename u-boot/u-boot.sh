@@ -110,7 +110,7 @@ build_clone_atf_tool() {
 	echo "ATF-TOOL Repository: ${ATF_TOOL_URL}" >> ${BUILD_LABEL_FILE}
 	echo "ATF-TOOL Branch: ${ATF_TOOL_BRANCH}" >> ${BUILD_LABEL_FILE}
 
-	echo "ATF-TOOL commit: \c"
+	echo "ATF-TOOL commit: \c" >> ${BUILD_LABEL_FILE}
 
 	# Retrieving ATF-TOOL HEAD commit hash id, and append to label file
 	cat ${BUILD_DIR}/atf-tool/.git/refs/heads/${ATF_TOOL_BRANCH}	\
@@ -121,8 +121,13 @@ build_clone_atf_tool() {
 build_export_toolchain() {
 	export PATH=${TOOLCHAIN_DIR}/bin:${PATH}
 	export CROSS_COMPILE=aarch64-linux-gnu-
-	echo "GCC information" >> ${BUILD_LABEL_FILE}
+
+	echo "GCC for arm64 information" >> ${BUILD_LABEL_FILE}
 	aarch64-linux-gnu-gcc --version >> ${BUILD_LABEL_FILE}
+	echo "" >> ${BUILD_LABEL_FILE}
+
+	echo "GCC for arm32 information" >> ${BUILD_LABEL_FILE}
+	arm-linux-gnueabi-gcc --version >> ${BUILD_LABEL_FILE}
 	echo "" >> ${BUILD_LABEL_FILE}
 }
 
@@ -369,6 +374,8 @@ build_atf () {
 # Use label file to save build information, this echo will overwrite
 # every thing in that file.
 echo "Build Information" > ${BUILD_LABEL_FILE}
+echo "-----------------" >> ${BUILD_LABEL_FILE}
+echo "" >> ${BUILD_LABEL_FILE}
 
 build_export_toolchain
 
@@ -376,9 +383,9 @@ build_clone_u_boot
 build_clone_atf
 build_clone_atf_tool
 
-# Save build info to image directory
-cp ${BUILD_LABEL_FILE} ${IMAGE_DIR}/u-boot
 
 build_u_boot
 build_atf
 
+# Save build info to image directory
+cp ${BUILD_LABEL_FILE} ${IMAGE_DIR}/u-boot/
