@@ -122,6 +122,7 @@ build_clone_atf_tool() {
 }
 
 build_export_rootfs_commit () {
+	echo "----  Rootfs-extra  ----" >> ${BUILD_LABEL_FILE}
 	echo "Rootfs-extra Branch: \c" >> ${BUILD_LABEL_FILE}
 	git symbolic-ref --short -q HEAD >> ${BUILD_LABEL_FILE}
 
@@ -130,6 +131,8 @@ build_export_rootfs_commit () {
 
 	echo "Locally modfied files:" >> ${BUILD_LABEL_FILE}
 	git status --porcelain >> ${BUILD_LABEL_FILE}
+
+	echo "" >> ${BUILD_LABEL_FILE}
 }
 
 build_export_toolchain() {
