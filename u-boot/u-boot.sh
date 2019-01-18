@@ -121,7 +121,20 @@ build_clone_atf_tool() {
 	cp -R ${BUILD_DIR}/atf-tool/* ${BUILD_DIR}/atf-tool-backup
 }
 
+build_export_rootfs_commit () {
+	echo "Rootfs-extra Branch: \c" >> ${BUILD_LABEL_FILE}
+	git symbolic-ref --short -q HEAD >> ${BUILD_LABEL_FILE}
+
+	echo "Rootfs-extra commit: \c" >> ${BUILD_LABEL_FILE}
+	git rev-parse HEAD >> ${BUILD_LABEL_FILE}
+
+	echo "Locally modfied files:" >> ${BUILD_LABEL_FILE}
+	git status --porcelain >> ${BUILD_LABEL_FILE}
+}
+
 build_export_toolchain() {
+	build_export_rootfs_commit
+
 	export PATH=${TOOLCHAIN_DIR}/bin:${PATH}
 	export CROSS_COMPILE=aarch64-linux-gnu-
 
