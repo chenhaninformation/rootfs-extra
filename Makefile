@@ -50,8 +50,7 @@ all: rootfs u-boot
 # This target will pack all files in $(ROOTFS_DIR) to a single image file
 # to $(IMAGE_DIR)/image.tar.gz
 rootfs: overlay
-	tar cvO -C ${ROOTFS_DIR}/ . | xz -z9eT0 > ${IMAGE_DIR}.tar.xz	\
-		> /dev/null
+	tar cvO -C ${ROOTFS_DIR}/ . | xz -z9eT0 > ${IMAGE_DIR}/rootfs.tar.xz
 
 # This target will add/deleate/alter file system's file after all files are
 # copied to $(ROOTFS_DIR)
